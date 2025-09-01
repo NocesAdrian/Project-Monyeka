@@ -30,4 +30,13 @@ elif [[ "$condition" = "list" ]]; then
 elif [[ -n "$condition" && -z "$2" ]]; then
     git add .
     git commit -m "$message"
+    exit 0
+elif [[ -z "$condition" ]]; then
+    echo " /\_/\ "
+    echo "( o.o ) Nyaa"
+    echo " > ^ <"
+    exit 0
 fi
+
+
+
