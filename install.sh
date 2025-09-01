@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -d ~/.config/MonyekaTemplates ]]; then
+if [[ -e ~/.config/MonyekaTemplates ]]; then
     echo "~/.config/MonyekaTemplates Exist."
     echo "removing..."
     rm -r ~/.config/MonyekaTemplates
@@ -16,5 +16,5 @@ fi
 cp -r src/MonyekaTemplates ~/.config/
 echo "template installed."
 sudo cp src/nyaa /usr/local/bin/
-echo "cmd installed."
+echo "nyaa installed."
 

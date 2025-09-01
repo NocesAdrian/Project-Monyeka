@@ -1,12 +1,13 @@
 #!/bin/bash
 
 condition="$1"
+message="$1"
 Lang="$2"
 ProjectName="$3"
 curdir="$(pwd)"
 
-if [[ "$condition" = "new" ]]; then
-    echo "nyaaaaaa... $ProjectName"
+if [[ "$condition" = "nyaa" ]]; then
+    echo "nyaaaaaa $ProjectName..."
     mkdir -p "$curdir/$ProjectName"
     cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
     echo "nyaa."
@@ -17,8 +18,16 @@ if [[ "$condition" = "new" ]]; then
     git commit -m "Create development Branch"
     git branch release
     cd ..
-elif [[ "$condition" = "dewete" && -n "$2" ]]; then
-    echo "nyaaaaaaaa... $2..."
+    exit 0
+elif [[ "$condition" = "nyee" && -n "$2" ]]; then
+    echo "nyeeeeee $2..."
     sudo rm -r "$curdir/$2"
-    echo "nyaa."
+    echo "nyee."
+    exit 1
+elif [[ "$condition" = "list" ]]; then
+    ls ~/.config/MonyekaTemplates
+    exit 0
+elif [[ -n "$condition" && -z "$2" ]]; then
+    git add .
+    git commit -m "$message"
 fi
