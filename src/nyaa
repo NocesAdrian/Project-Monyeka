@@ -6,7 +6,8 @@ ProjectName="$3"
 curdir="$(pwd)"
 
 if [[ "$condition" = "new" ]]; then
-    echo "nyaaaaaa..." 
+    echo "nyaaaaaa... $ProjectName"
+    mkdir -p "$curdir/$ProjectName"
     cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
     echo "nyaa."
     cd "$curdir/$ProjectName"
