@@ -1,3 +1,22 @@
 #!/bin/bash
 
+condition="$1"
+Lang="$2"
+ProjectName="$3"
+curdir="$(pwd)"
 
+if [[ "$condition" = "new" ]]; then
+    echo "Myaaking pwaajweect $ProjectName..."
+    cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
+    echo "dwan."
+    cd "$curdir/$ProjectName"
+    git init
+    git branch -m master development
+    git add .
+    git commit -m "Create development Branch"
+    git branch release
+elif [[ "$condition" = "dewete" && -n "$2" ]]; then
+    echo "Nyuuking pwaajweect $2..."
+    sudo rm -r "$curdir/$2"
+    echo "dwan."
+fi
