@@ -6,9 +6,9 @@ ProjectName="$3"
 curdir="$(pwd)"
 
 if [[ "$condition" = "new" ]]; then
-    echo "Myaaking pwaajweect $ProjectName..."
+    echo "nyaaaaaa..." 
     cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
-    echo "dwan."
+    echo "nyaa."
     cd "$curdir/$ProjectName"
     git init
     git branch -m master development
@@ -17,7 +17,7 @@ if [[ "$condition" = "new" ]]; then
     git branch release
     cd ..
 elif [[ "$condition" = "dewete" && -n "$2" ]]; then
-    echo "Nyuuking pwaajweect $2..."
+    echo "nyaaaaaaaa... $2..."
     sudo rm -r "$curdir/$2"
-    echo "dwan."
+    echo "nyaa."
 fi
