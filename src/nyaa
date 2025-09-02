@@ -10,7 +10,9 @@ condition="$1"
 message="$1"
 Lang="$2"
 ProjectName="$3"
+date="$(date +"%I:%M:%S %p")"
 curdir="$(pwd)"
+ProjectName2=""$ProjectName"_"$date""
 
 easter_eggs() {
     echo " /\_/\ "
@@ -18,20 +20,42 @@ easter_eggs() {
     echo " > ^ <"
 }
 
+init_git() {
+        git init
+        git branch -m master development
+        git add .
+        git commit -m "Create development Branch"
+        git branch release
+}
+
+commit_git() {
+    git add .
+    git commit -m "$message"
+}
+
 # Main Logic
 if [[ "$condition" = "$new_Accent" ]]; then
-    echo "nyaaaaaa $ProjectName..."
-    mkdir -p "$curdir/$ProjectName"
-    cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
-    echo "nyaa."
-    cd "$curdir/$ProjectName"
-    git init
-    git branch -m master development
-    git add .
-    git commit -m "Create development Branch"
-    git branch release
-    cd ..
-    exit 0
+
+    if [[ -d "$curdir/$ProjectName" ]]; then
+        echo "nyaaaaaa $ProjectName2..."
+        mkdir -p "$curdir/$ProjectName2"
+        cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName2/"
+        echo "nyaa."
+        cd "$curdir/$ProjectName2"
+        init_git
+        cd ..
+        exit 1
+    else
+        echo "nyaaaaaa $ProjectName..."
+        mkdir -p "$curdir/$ProjectName"
+        cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
+        echo "nyaa."
+        cd "$curdir/$ProjectName"
+        init_git
+        cd ..
+        exit 0
+    fi
+
 elif [[ "$condition" = "$delete_Accent" && -n "$2" ]]; then
     echo "nyeeeeee $2..."
     sudo rm -r "$curdir/$2"
@@ -41,8 +65,7 @@ elif [[ "$condition" = "$list_Accent" ]]; then
     ls ~/.config/MonyekaTemplates
     exit 0
 elif [[ -n "$condition" && -z "$2" ]]; then
-    git add .
-    git commit -m "$message"
+    commit_git
     exit 0
 elif [[ -z "$condition" ]]; then
     easter_eggs

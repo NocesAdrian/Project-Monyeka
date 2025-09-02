@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [[ -e ~/.config/MonyekaTemplates ]]; then
+if [[ -d ~/.config/MonyekaTemplates ]]; then
     echo "~/.config/MonyekaTemplates Exist."
     echo "removing..."
     rm -r ~/.config/MonyekaTemplates
     echo "done."
 fi
-if [[ -e /usr/local/bin/nyaa ]]; then
+if [[ -f /usr/local/bin/nyaa ]]; then
     echo "/usr/local/bin/nyaa Exist."
     echo "removing..."
     sudo rm /usr/local/bin/nyaa
