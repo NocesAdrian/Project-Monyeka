@@ -12,20 +12,20 @@ Lang="$2"
 ProjectName="$3"
 date="$(date +"%I:%M:%S %p")"
 curdir="$(pwd)"
-ProjectName2=""$ProjectName"_"$date""
+ProjectName2="$ProjectName"_"$date"
 
-easter_eggs() {
-    echo " /\_/\ "
-    echo "( o.o ) Nyaa"
-    echo " > ^ <"
+easter_egg() {
+    echo " /\_/\   Hola!"
+    echo "( o.o )  nyaa --help"
+    echo " > ^ <   nyaa v1.1"
 }
 
 init_git() {
-        git init
-        git branch -m master development
-        git add .
-        git commit -m "Create development Branch"
-        git branch release
+    git init
+    git branch -m master development
+    git add .
+    git commit -m "Create development Branch"
+    git branch release
 }
 
 commit_git() {
@@ -37,19 +37,15 @@ commit_git() {
 if [[ "$condition" = "$new_Accent" ]]; then
 
     if [[ -d "$curdir/$ProjectName" ]]; then
-        echo "nyaaaaaa $ProjectName2..."
         mkdir -p "$curdir/$ProjectName2"
         cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName2/"
-        echo "nyaa."
         cd "$curdir/$ProjectName2"
         init_git
         cd ..
         exit 1
     else
-        echo "nyaaaaaa $ProjectName..."
         mkdir -p "$curdir/$ProjectName"
         cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
-        echo "nyaa."
         cd "$curdir/$ProjectName"
         init_git
         cd ..
@@ -68,7 +64,7 @@ elif [[ -n "$condition" && -z "$2" ]]; then
     commit_git
     exit 0
 elif [[ -z "$condition" ]]; then
-    easter_eggs
+    easter_egg
     exit 0
 fi
 
