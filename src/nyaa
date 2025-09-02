@@ -1,12 +1,25 @@
 #!/bin/bash
 
+# Configure sub-command Name
+new_Accent="nyaa" # new command creates project
+delete_Accent="nyee" # delete command deletes project
+list_Accent="list" # list command, list available template
+
+# DO NOT TOUCH
 condition="$1"
 message="$1"
 Lang="$2"
 ProjectName="$3"
 curdir="$(pwd)"
 
-if [[ "$condition" = "nyaa" ]]; then
+easter_eggs() {
+    echo " /\_/\ "
+    echo "( o.o ) Nyaa"
+    echo " > ^ <"
+}
+
+# Main Logic
+if [[ "$condition" = "$new_Accent" ]]; then
     echo "nyaaaaaa $ProjectName..."
     mkdir -p "$curdir/$ProjectName"
     cp -r ~/.config/MonyekaTemplates/"$Lang"/* "$curdir/$ProjectName/"
@@ -19,12 +32,12 @@ if [[ "$condition" = "nyaa" ]]; then
     git branch release
     cd ..
     exit 0
-elif [[ "$condition" = "nyee" && -n "$2" ]]; then
+elif [[ "$condition" = "$delete_Accent" && -n "$2" ]]; then
     echo "nyeeeeee $2..."
     sudo rm -r "$curdir/$2"
     echo "nyee."
     exit 1
-elif [[ "$condition" = "list" ]]; then
+elif [[ "$condition" = "$list_Accent" ]]; then
     ls ~/.config/MonyekaTemplates
     exit 0
 elif [[ -n "$condition" && -z "$2" ]]; then
@@ -32,9 +45,7 @@ elif [[ -n "$condition" && -z "$2" ]]; then
     git commit -m "$message"
     exit 0
 elif [[ -z "$condition" ]]; then
-    echo " /\_/\ "
-    echo "( o.o ) Nyaa"
-    echo " > ^ <"
+    easter_eggs
     exit 0
 fi
 
