@@ -20,6 +20,15 @@ easter_egg() {
     echo " > ^ <   nyaa v1.1"
 }
 
+info() {
+    echo "nyaa nyaa <Language> <ProjectName>  creates a project"
+    echo "nyaa nyee <ProjectName>             Deletes the Project"
+    echo "nyaa list                           List Templates"
+    echo "nyaa \"Message\"                      Add and Commit Project with Message"
+    echo "nyaa clean                          clean up folders /bin /build"
+    echo "nyaa                                compile and run or ???"
+}
+
 init_git() {
     git init
     git branch -m master development
@@ -60,12 +69,25 @@ elif [[ "$condition" = "$delete_Accent" && -n "$2" ]]; then
 elif [[ "$condition" = "$list_Accent" ]]; then
     ls ~/.config/MonyekaTemplates
     exit 0
-elif [[ -n "$condition" && -z "$2" ]]; then
-    commit_git
-    exit 0
+elif [[ -n "$condition" && "$condition" != "--help" ]]; then
+    if [[ "$condition" = "clean" ]]; then
+        make clean
+        exit 0
+    else
+        commit_git
+        exit 0
+    fi
 elif [[ -z "$condition" ]]; then
-    easter_egg
-    exit 0
+    if [[ -f "$curdir/Makefile" ]]; then 
+        make
+        exit 0
+    else
+        easter_egg
+        exit 0
+    fi
+elif [[ "$condition" = "--help" ]]; then
+    info
+    exit 0;
 fi
 
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # configure main cmd
-cmd="nyaa"
+cmd="nyaa" # change this based on the name of this file
 
 if [[ -d ~/.config/MonyekaTemplates ]]; then
     echo "~/.config/MonyekaTemplates Exist."
