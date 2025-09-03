@@ -1,6 +1,6 @@
 ## Monyeka Project
 
-Personal Project Manager, Built Entirely for my Comfort
+Personal Project Manager, Built Entirely for my Comfort.
 
 ### Usage
 ```bash
