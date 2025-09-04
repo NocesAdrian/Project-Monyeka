@@ -17,7 +17,7 @@ ProjectName2="$ProjectName"_"$date"
 easter_egg() {
     echo " /\_/\   Hola!"
     echo "( o.o )  nyaa --help"
-    echo " > ^ <   nyaa v1.1"
+    echo " > ^ <   nyaa v1.2"
 }
 
 info() {
