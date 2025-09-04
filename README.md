@@ -2,6 +2,13 @@
 
 Personal Project Manager, Built Entirely for my Comfort.
 
+### installation
+```bash
+git clone https://github.com/NocesAdrian/Project-Monyeka.git
+cd Project-Monyeka
+./install.sh
+```
+
 ### Usage
 ```bash
 nyaa nyaa <Language> <ProjectName>  creates a project
