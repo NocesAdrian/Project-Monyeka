@@ -29,20 +29,23 @@ int main () {
     bool running = true;
     SDL_Event event;
     while (running) {
+        
         while (SDL_PollEvent(&event)) {
+            // only quit if an event occured and type of event is quit
             if (event.type == SDL_QUIT) running = false;
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            SDL_RenderClear(renderer);
-            
-            SDL_Rect rect = {200, 150, 400, 300};
-            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-            SDL_RenderFillRect(renderer, &rect);
-            
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            SDL_RenderDrawLine(renderer, 100, 100, 700, 500);
-
-            SDL_RenderPresent(renderer);
         }
+
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+        
+        SDL_Rect rect = {200, 150, 400, 300};
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_RenderFillRect(renderer, &rect);
+        
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderDrawLine(renderer, 100, 100, 700, 500);
+
+        SDL_RenderPresent(renderer);
     }
     
     // AFTER CARE CLEANUP leftover
